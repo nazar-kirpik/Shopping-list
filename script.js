@@ -53,7 +53,12 @@ function onAddItemSubmit(e) {
     isEditMode = false;
   } else {
     if (checkIfItemExists(newItem)) {
-      toast('That item already exists!');
+      swal({
+        title: "No item to add",
+        text: "Please, add non-empty item!",
+        icon: "info",
+        button: "OK",
+      });
       return;
     }
   }
