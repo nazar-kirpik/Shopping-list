@@ -54,8 +54,8 @@ function onAddItemSubmit(e) {
   } else {
     if (checkIfItemExists(newItem)) {
       swal({
-        title: "No item to add",
-        text: "Please, add non-empty item!",
+        title: "This item already exists",
+        text: "Please, add a different item!",
         icon: "info",
         button: "OK",
       });
