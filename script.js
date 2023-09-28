@@ -12,21 +12,6 @@ function displayItems() {
   checkUI();
 }
 
-function toast(text) {
-  Toastify({
-    text,
-    duration: 3000,
-    newWindow: true,
-    close: true,
-    gravity: "top", // `top` or `bottom`
-    position: "center", // `left`, `center` or `right`
-    stopOnFocus: true, // Prevents dismissing of toast on hover
-    style: {
-      background: "linear-gradient(to right, #00b09b, #96c93d)",
-    },
-  }).showToast();
-}
-
 function onAddItemSubmit(e) {
   e.preventDefault();
 
@@ -151,6 +136,7 @@ function setItemToEdit(item) {
 function removeItem(item) {
   swal({
     title: "Are you sure?",
+    text: "Once confirmed, your item will be deleted",
     icon: "warning",
     buttons: true,
     dangerMode: true,
