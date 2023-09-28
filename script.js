@@ -51,7 +51,8 @@ function onAddItemSubmit(e) {
     isEditMode = false;
     removeButtons.forEach((el) => {
       el.style.display = 'block';
-    })
+    });
+    clearBtn.removeAttribute("disabled");
   } else {
     if (checkIfItemExists(newItem)) {
       swal({
@@ -151,6 +152,7 @@ function setItemToEdit(item) {
   removeButtons.forEach((btn) => {
     btn.style.display = 'none';
   })
+  clearBtn.setAttribute("disabled", true);
   itemInput.value = item.textContent;
 }
 
