@@ -17,7 +17,7 @@
   </head>
   <body>
     <div class="container">
-      <button id = "theme-toggle" class="fa fa-desktop"></button>
+      <div id = "theme-toggle" class="fa fa-desktop"></div>
       <header>
         <img src="images/note.png" alt="">
         <h1>Shopping List</h1>
@@ -33,8 +33,11 @@
           >
         </div>
         <div class="form-control">
-          <button type="submit" class="btn">
+          <button type="submit" class="btn" id="btn-add">
             <i class="fa-solid fa-plus"></i> Add Item
+          </button>
+          <button type="submit" class="btn" id="btn-update" style="background-color: #228B22; display: none;">
+            <i class="fa-solid fa-pen"></i> Update Item
           </button>
         </div>
       </form>

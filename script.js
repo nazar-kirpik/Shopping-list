@@ -3,8 +3,11 @@ const itemInput = document.getElementById('item-input');
 const itemList = document.getElementById('item-list');
 const clearBtn = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
-const formBtn = itemForm.querySelector('button');
+const addBtn = itemForm.querySelector('#btn-add');
+const updateBtn = itemForm.querySelector('#btn-update');
 const themeToggle = document.querySelector('#theme-toggle');
+const buttons = document.querySelectorAll('button');
+
 const body = document.querySelector('body');
 let isEditMode = false;
 
@@ -36,6 +39,9 @@ function onAddItemSubmit(e) {
   // Check for edit mode
   if (isEditMode) {
     const itemToEdit = itemList.querySelector('.edit-mode');
+
+    updateBtn.style.display = 'none';
+    addBtn.style.display = 'block';
 
     removeItemFromStorage(itemToEdit.textContent);
     itemToEdit.classList.remove('edit-mode');
@@ -133,8 +139,8 @@ function setItemToEdit(item) {
     .forEach((i) => i.classList.remove('edit-mode'));
 
   item.classList.add('edit-mode');
-  formBtn.innerHTML = '<i class="fa-solid fa-pen"></i>   Update Item';
-  formBtn.style.backgroundColor = '#228B22';
+  addBtn.style.display = 'none';
+  updateBtn.style.display = 'block';
   itemInput.value = item.textContent;
 }
 
@@ -198,9 +204,6 @@ function clearItems() {
       swal("Your items are safe!");
     }
   });
-  // if (confirm('Are you sure?')) {
-    
-  // }
 }
 
 function filterItems(e) {
@@ -217,6 +220,8 @@ function filterItems(e) {
     }
   });
 }
+
+console.log(buttons)
 
 function toggleTheme() {
   if (body.classList.contains('dark-mode')){
@@ -239,8 +244,8 @@ function checkUI() {
     itemFilter.style.display = 'block';
   }
 
-  formBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add Item';
-  formBtn.style.backgroundColor = '#333';
+  // addBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add Item';
+  // addBtn.style.backgroundColor = '#333';
 
   isEditMode = false;
 }
