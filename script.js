@@ -36,7 +36,7 @@ function onAddItemSubmit(e) {
   if (newItem.trim() === '') {
     swal({
       title: "No item to add",
-      text: "Please, add a truthy value item!",
+      text: "Please, add non-empty item!",
       icon: "info",
       button: "OK",
     });
