@@ -4,7 +4,12 @@ const itemList = document.getElementById('item-list');
 const clearBtn = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
 const formBtn = itemForm.querySelector('button');
+const themeToggle = document.querySelector('#theme-toggle');
+const body = document.querySelector('body');
 let isEditMode = false;
+
+body.classList.add('dark-mode');
+body.classList.remove('dark-mode');
 
 function displayItems() {
   const itemsFromStorage = getItemsFromStorage();
@@ -213,6 +218,14 @@ function filterItems(e) {
   });
 }
 
+function toggleTheme() {
+  if (body.classList.contains('dark-mode')){
+    body.classList.remove('dark-mode');
+  } else {
+    body.classList.add('dark-mode');
+  }
+}
+
 function checkUI() {
   itemInput.value = '';
 
@@ -240,6 +253,7 @@ function init() {
   clearBtn.addEventListener('click', clearItems);
   itemFilter.addEventListener('input', filterItems);
   document.addEventListener('DOMContentLoaded', displayItems);
+  themeToggle.addEventListener('click', toggleTheme);
 
   checkUI();
 }
