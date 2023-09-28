@@ -18,6 +18,7 @@ function displayItems() {
   const itemsFromStorage = getItemsFromStorage();
   itemsFromStorage.forEach((item) => addItemToDOM(item));
   checkUI();
+  
 }
 
 function onAddItemSubmit(e) {
@@ -38,6 +39,7 @@ function onAddItemSubmit(e) {
 
   // Check for edit mode
   if (isEditMode) {
+    const removeButtons = document.querySelectorAll('.remove-item');
     const itemToEdit = itemList.querySelector('.edit-mode');
 
     updateBtn.style.display = 'none';
@@ -47,6 +49,9 @@ function onAddItemSubmit(e) {
     itemToEdit.classList.remove('edit-mode');
     itemToEdit.remove();
     isEditMode = false;
+    removeButtons.forEach((el) => {
+      el.style.display = 'block';
+    })
   } else {
     if (checkIfItemExists(newItem)) {
       swal({
@@ -132,6 +137,7 @@ function checkIfItemExists(item) {
 }
 
 function setItemToEdit(item) {
+  const removeButtons = document.querySelectorAll('.remove-item');
   isEditMode = true;
 
   itemList
@@ -141,6 +147,10 @@ function setItemToEdit(item) {
   item.classList.add('edit-mode');
   addBtn.style.display = 'none';
   updateBtn.style.display = 'block';
+
+  removeButtons.forEach((btn) => {
+    btn.style.display = 'none';
+  })
   itemInput.value = item.textContent;
 }
 
@@ -220,8 +230,6 @@ function filterItems(e) {
     }
   });
 }
-
-console.log(buttons)
 
 function toggleTheme() {
   if (body.classList.contains('dark-mode')){
