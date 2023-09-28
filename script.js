@@ -42,6 +42,8 @@ function onAddItemSubmit(e) {
     const removeButtons = document.querySelectorAll('.remove-item');
     const itemToEdit = itemList.querySelector('.edit-mode');
 
+    console.log(itemToEdit);
+
     updateBtn.style.display = 'none';
     addBtn.style.display = 'block';
 

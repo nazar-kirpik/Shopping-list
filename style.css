@@ -133,6 +133,7 @@ header h1 {
 }
 
 #theme-toggle:hover {
+  cursor: pointer;
   transform: scale(2); 
 }
 
