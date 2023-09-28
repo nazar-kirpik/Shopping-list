@@ -152,6 +152,11 @@ header h1 {
   background-color: #BA0517;
 }
 
+.remove-item {
+  margin: auto 0px;
+  height: 16px;
+}
+
 .dark-mode .remove-item:hover {
   color: red;
 }
