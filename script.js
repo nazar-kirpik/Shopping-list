@@ -7,6 +7,7 @@ const addBtn = itemForm.querySelector('#btn-add');
 const updateBtn = itemForm.querySelector('#btn-update');
 const themeToggle = document.querySelector('#theme-toggle');
 const buttons = document.querySelectorAll('button');
+let theme = JSON.parse(localStorage.getItem('theme'));
 
 const body = document.querySelector('body');
 let isEditMode = false;
@@ -18,7 +19,6 @@ function displayItems() {
   const itemsFromStorage = getItemsFromStorage();
   itemsFromStorage.forEach((item) => addItemToDOM(item));
   checkUI();
-  
 }
 
 function onAddItemSubmit(e) {
@@ -236,8 +236,12 @@ function filterItems(e) {
 function toggleTheme() {
   if (body.classList.contains('dark-mode')){
     body.classList.remove('dark-mode');
+    theme = 'light';
+    localStorage.setItem('theme', JSON.stringify(theme))
   } else {
     body.classList.add('dark-mode');
+    theme = 'dark';
+    localStorage.setItem('theme', JSON.stringify(theme));
   }
 }
 
@@ -269,6 +273,12 @@ function init() {
   itemFilter.addEventListener('input', filterItems);
   document.addEventListener('DOMContentLoaded', displayItems);
   themeToggle.addEventListener('click', toggleTheme);
+  
+  if (theme === 'dark') {
+    body.classList.add('dark-mode');
+  } else {
+    body.classList.remove('dark-mode');
+  }
 
   checkUI();
 }
