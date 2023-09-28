@@ -56,8 +56,10 @@ function onAddItemSubmit(e) {
     items.forEach((el) => arr.push(el.textContent));
     itemsFromStorage = arr
     localStorage.setItem('items', JSON.stringify(itemsFromStorage))
+
     const button = createButton('remove-item btn-link text-red');
     itemToEdit.appendChild(button);
+    
     itemToEdit.classList.remove('edit-mode');
     isEditMode = false;
     removeButtons.forEach((el) => {
@@ -137,7 +139,7 @@ function getItemsFromStorage() {
 }
 
 function onClickItem(e) {
-  if (e.target.parentElement.classList.contains('remove-item')) {
+  if (e.target.parentElement.classList.contains('remove-item') || e.target.classList.contains('remove-item')) {
     removeItem(e.target.parentElement.parentElement);
   } else {
     setItemToEdit(e.target);
