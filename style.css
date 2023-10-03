@@ -29,7 +29,6 @@ header h1 {
 }
 
 .container {
-  position: relative;
   max-width: 500px;
   margin: 30px auto;
   padding: 20px;
@@ -90,7 +89,7 @@ header h1 {
   width: 100%;
   font-size: 16px;
   background-color: transparent;
-  color: black;
+  color: #333;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px 20px;
@@ -123,46 +122,6 @@ header h1 {
   padding: 10px 15px;
   margin: 0 5px 20px;
   font-weight: 700;
-}
-
-#theme-toggle {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  transform: scale(1.5);
-}
-
-#theme-toggle:hover {
-  cursor: pointer;
-  transform: scale(2); 
-}
-
-.dark-mode {
-  background-color: rgb(0, 0, 0);
-  color: white;
-}
-
-.dark-mode button {
-  background-color: rgb(0, 0, 0);
-  color: white;
-}
-
-.dark-mode .btn-clear:hover {
-  color: white;
-  background-color: #BA0517;
-}
-
-.remove-item {
-  margin: auto 0px;
-  height: 16px;
-}
-
-.dark-mode .remove-item:hover {
-  color: red;
-}
-
-.dark-mode #btn-add {
-  background-color: #0176D3;
 }
 
 @media (max-width: 500px) {
