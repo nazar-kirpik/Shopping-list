@@ -34,12 +34,7 @@ function onAddItemSubmit(e) {
 
   // Validate Input
   if (newItem.trim() === '') {
-    swal({
-      title: "No item to add",
-      text: "Please, add a truthy value item!",
-      icon: "info",
-      button: "OK",
-    });
+    alert('Please add an item')
     return;
   }
 
@@ -53,7 +48,7 @@ function onAddItemSubmit(e) {
     isEditMode = false;
   } else {
     if (checkIfItemExists(newItem)) {
-      toast('That item already exists!');
+      alert('That item already exists!');
       return;
     }
   }
@@ -144,27 +139,15 @@ function setItemToEdit(item) {
 }
 
 function removeItem(item) {
-  swal({
-    title: "Are you sure?",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  })
-  .then((willDelete) => {
-    if (willDelete) {
-      swal("Item has been deleted", {
-        icon: "success",
-      });
-      // Remove item from DOM
-      item.remove();
+  if (confirm('Are you sure?')) {
+    // Remove item from DOM
+    item.remove();
 
-      // Remove item from storage
-      removeItemFromStorage(item.textContent);
+    // Remove item from storage
+    removeItemFromStorage(item.textContent);
 
-      checkUI();
-    }
-  });
-  checkUI();
+    checkUI();
+  }
 }
 
 function removeItemFromStorage(item) {
@@ -178,33 +161,12 @@ function removeItemFromStorage(item) {
 }
 
 function clearItems() {
-  swal({
-    title: "Are you sure?",
-    text: "Once confirmed, all your items will be gone",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  })
-  .then((willDelete) => {
-    if (willDelete) {
-      while (itemList.firstChild) {
-        itemList.removeChild(itemList.firstChild);
-      }
+  while (itemList.firstChild) {
+    itemList.removeChild(itemList.firstChild);
+  }
 
-      // Clear from localStorage
-      localStorage.removeItem('items');
-
-      checkUI();
-      swal("Poof! Your items have been deleted!", {
-        icon: "success",
-      });
-    } else {
-      swal("Your items are safe!");
-    }
-  });
-  // if (confirm('Are you sure?')) {
-
-  // }
+  // Clear from localStorage
+  localStorage.removeItem('items');
 }
 
 function filterItems(e) {
